@@ -11,7 +11,7 @@ import SwiftUI
 struct Dream_JournalApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            EntryListView()
         }
     }
 }

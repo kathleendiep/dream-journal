@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct EntryListView: View {
-    
     @State var viewModel = EntryListViewModel() // <- make an array of entries variable
     
     var body: some View {
         NavigationView {
             List {
-                Section("My Entries") {
+               Section("My Entries") {
                     // add the array
                     ForEach(viewModel.entries) { entry in
                         
@@ -23,10 +22,10 @@ struct EntryListView: View {
                             DetailView(entry: entry)
                         } label: {
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("title")
+                                Text(entry.title)
                                     .bold()
                                     .font(.headline)
-                                Text("Body")
+                                Text(entry.body)
                                     .font(.system(size:14))
                             }.padding()
                         }
@@ -39,9 +38,10 @@ struct EntryListView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
                         // Destination
-                        Text("Hello Hackbright")
+                        DetailView()
+                    } label: {
+                        Image(systemName: "plus")
                     }
-                    Image(systemName: "plus")
                 }
             }
         }
@@ -53,9 +53,9 @@ struct EntryListView_Previews: PreviewProvider {
         EntryListView()
         
         // for different iphones
-        EntryListView()
-            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
-            .previewDisplayName("iphone 12")
+        //        EntryListView()
+        //            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+        //            .previewDisplayName("iphone 12")
         
     }
 }
